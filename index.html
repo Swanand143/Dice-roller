@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Roller</title>
+    <style>
+      body {
+        font-family: Impact, "Arial Narrow Bold", sans-serif;
+        letter-spacing: 2px;
+        background-color: rgb(3, 39, 100);
+      }
+      .dice-container {
+        border: 3px solid #000;
+        width: 300px;
+        margin: 0 auto;
+        background-color: #ffffff14;
+        padding: 20px;
+        border-radius: 20px;
+      }
+
+      .dice-img {
+        width: 200px;
+        height: 200px;
+        display: block;
+        margin: 50px auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: #000000;
+        text-shadow: 0 2px 0 rgba(234, 222, 222, 0.7);
+      }
+
+      .dice-btn-roll {
+        width: 150px;
+        display: block;
+        margin: 20px auto;
+        font-family: fantasy;
+        font-size: 25px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        background-color: #21d4fd;
+        background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+      }
+      .dice-btn-roll:hover {
+        transform: scale(1.025);
+        transition: 0.5s;
+      }
+
+      @keyframes roll {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .animate {
+        animation: roll 1s infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Dice Roller</h1>
+    <div class="dice-container">
+      <img class="dice-img" src="die.png" alt="dice" id="dice" />
+
+      <button class="dice-btn-roll" onclick="diceRoll()">Roll Dice</button>
+    </div>
+    <script>
+      function diceRoll() {
+        const min = 1;
+        const max = 6;
+
+        const randomNumber = Math.round(Math.random() * (max - min)) + min;
+
+        const imgElement = document.getElementById("dice");
+        switch (randomNumber) {
+          case 1:
+            imgElement.src = "one.png";
+            break;
+
+          case 2:
+            imgElement.src = "two.png";
+            break;
+
+          case 3:
+            imgElement.src = "three.png";
+            break;
+
+          case 4:
+            imgElement.src = "four.png";
+            break;
+
+          case 5:
+            imgElement.src = "five.png";
+            break;
+
+          case 6:
+            imgElement.src = "six.png";
+            break;
+
+          default:
+            imgElement.src = "default.png";
+        }
+        imgElement.classList.add("animate");
+        setTimeout(() => {
+          imgElement.classList.remove("animate");
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
